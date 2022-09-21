@@ -164,7 +164,7 @@ CORS_ORIGIN_WHITELIST = (
      'http://localhost:3000',
      'http://localhost:3001',
      'http://localhost:8000',
-     'https://softwarewebsite_17_v1.pythonanywhere.com',
+     'https://softwarewebsite17v1.pythonanywhere.com',
  )
 
 
