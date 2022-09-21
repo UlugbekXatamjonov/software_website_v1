@@ -1,0 +1,8 @@
+<ul>
+	{% for software in lastest_softwares %}
+		<li><a href="{{ software.get_absolute_url }}">{{ software.name }}</a></li>
+		
+	{% endfor %}
+</ul>
+
+

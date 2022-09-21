@@ -1,0 +1,5 @@
+<ul>
+	{% for game in lastest_games %}
+		<li><a href="{{ game.get_absolute_url }}">{{ game.name }}</a></li>
+	{% endfor %}
+</ul>

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Software Detail{% endblock title %} 
+
+{% block content %}
+
+	<h1>This is Software Detail page</h1>
+	<h3>{{ software.name }}</h3>
+	<li>{{ software.platform }}</li>
+	<li>{{ software.software_category }}</li>
+	<li>{{ software.creator }}</li>
+	<li>{{ software.version }}</li>
+	<li>{{ software.tags }}</li>
+	<li>{{ software.created_at }}</li>
+	<button ><a href="{{ software.file_32x.url }}">Downlaod 32 </a></button>
+	<br>
+	<button ><a href="{{ software.file_64x.url }}">Downlaod 64 </a></button>
+	<br>
+	<img height="150 px" src="{{ software.screenshot.url }}">
+
+	<h3>Screenshots</h3>
+	{% for photo in software_photo %}
+		<img height="150 px" src="{{ photo.screenshot.url }}">		
+	{% endfor %}
+
+{% endblock content %}

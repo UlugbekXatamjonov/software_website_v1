@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load tags %}
+
+{% block title %}
+	{% if game_category %}{{ game_category.name }}{% else %}Games and Softwares{% endif %}
+{% endblock title %} 
+
+{% block content %}
+
+	<h1>Game Kategoriyalari</h3>
+
+	<ul>
+		<li {% if not game_category %}class="selected"{% endif %}>
+			<a href="{% url 'software:list' %}">Hammasi</a>
+		</li>
+		{% for c in game_categories %}
+		<li {% if game_category.slug == c.slug %}class="selected" {% endif %}>
+			<a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+		</li>
+		{% endfor %}
+	</ul>
+
+	<h3>{% if game_category %}{{ game_category.name }}{% else %}Games{% endif %}</h1>
+
+	{% for game in games %}
+		<li><a href="{{ game.get_absolute_url }}">{{ game.name }}</a></li>
+	{% endfor %}
+
+	<!-- ---------------------------------------------------------  -->
+
+	<h1><<< ------------------------------------------- >>></h1>
+	
+	<h1>Software Kategoriyalari</h3>
+	
+	<ul>
+		<li {% if not software_category %}class="selected"{% endif %}>
+			<a href="{% url 'software:list' %}">Hammasi</a>
+		</li>
+		{% for c in software_categories %}
+		<li {% if software_category.slug1 == c.slug1 %}class="selected" {% endif %}>
+			<a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+		</li>
+		{% endfor %}
+	</ul>
+
+	<h3>{% if software_category %}{{ software_category.name }}{% else %}Software{% endif %}</h1>
+
+	{% for software in softwares %}
+		<li><a href="{{ software.get_absolute_url }}">{{ software.name }}</a></li>	
+	{% endfor %}
+
+
+
+	<!-- Python -->
+	<h1>This is List page</h1>
+
+	<h3>-------------------------------------</h3>
+	<h3>Lastest Games</h3>
+	{% lastest_games %}
+	
+	<h3>-------------------------------------</h3>
+	<h3>Lastest Software</h3>
+	{% lastest_softwares %}
+	
+	<!-- TAG -->
+	{% if tag %}
+		<h2>"{{ tag.name }}" tegi bilan bog'liq maqolalar</h2>
+	{% endif %}
+	
+
+{% endblock content %}
+
+

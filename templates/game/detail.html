@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Game Detail{% endblock title %} 
+
+{% block content %}
+
+	<h1>This is Game Detail page</h1>
+	<h3>{{ game.name }}</h3>
+	<li>{{ game.platform }}</li>
+	<li>{{ game.game_category }}</li>
+	<li>{{ game.creator }}</li>
+	<li>{{ game.version }}</li>
+	<li>{{ game.tags }}</li>
+	<li>{{ game.created_at }}</li>
+
+
+	<br>
+	<form action="" method="POST">
+		{% csrf_token %}
+		<button type="submit" name="game-id" value="{{ game.id }}">Like</button>
+		
+	</form>
+	<br>
+
+	<button><a href="{{ game.file_32x.url }}">Download 32 format</a></button>
+	<br>
+	<button><a href="{{ game.file_64x.url }}">Download 64 format</a></button>
+	<br>
+	
+	<img height="150 px" src="{{ game.screenshot.url }}">
+	<br>
+	
+	<video height="240" width="320" controls >
+		<source src="{{ game.trailer.url }}" type="video/mp4">
+	</video>
+
+	<h3>Screenshots</h3>
+	{% for photo in game_photo %}
+		<img height="150 px" src="{{ photo.screenshot.url }}">		
+	{% endfor %}
+
+{% endblock content %}
